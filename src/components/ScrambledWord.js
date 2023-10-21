@@ -3,7 +3,7 @@ import words from "./WordsDb";
 function ScrambledWord () {
   return (
     <div>
-      "hello"
+      "ScrambedWord"
     </div>
   )
 }
