@@ -1,0 +1,32 @@
+/* About */
+
+.about img {
+    width: 120px; /* set the desired width */
+    height: 120px; /* set the desired height */
+    border-radius: 8px; 
+    float: left;    
+    margin: 0 15px 0 0;
+  }
+  
+.about-container {
+    background-color: bisque;
+    height : 100vh;
+  }
+  
+.about-dev{
+    display: flex;
+    background-color: green;
+}
+
+.about-devinfo {
+
+}
+
+.about-developers {
+    background-color: cornflowerblue;
+    display : flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+
