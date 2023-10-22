@@ -53,7 +53,7 @@ const words = [
   {id: 52, word: 'Carousel', date: 19704},
   {id: 53, word: 'Bouquet', date: 19705},
   {id: 54, word: 'Rainbow', date: 19706},
-  {id: 55, word: 'Chocolate', date: 19707}
+  {id: 55, word: 'Chocolate', date: 19707},
   {id: 56, word: 'Tranquility', date: 19708},
   {id: 57, word: 'Sparkling', date: 19709},
   {id: 58, word: 'Paradise', date: 19710},
@@ -64,7 +64,7 @@ const words = [
   {id: 63, word: 'Sunshine', date: 19715},
   {id: 64, word: 'Elephant', date: 19716},
   {id: 65, word: 'Butterfly', date: 19717},
-  {id: 66, word: 'Adventure', date: 19718}
+  {id: 66, word: 'Adventure', date: 19718},
   {id: 67, word: 'Paradise', date: 19719},
   {id: 68, word: 'Symphony', date: 19720},
   {id: 69, word: 'Universe', date: 19721},
