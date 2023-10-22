@@ -28,7 +28,7 @@
 
 .about-dev{
     display: flex;
-    
+    padding-top: 10px;
 }
 
 
@@ -41,32 +41,6 @@
    
   }
 
-
-
 .about-name-url{
   font-size: larger;
 }
-
-.about-Kenti {
-  
-}
-
-.about-Jennifer {
- 
-}
-
-.about-Dennys {
-  
-}
-  /* color pallete from  https://thecameronteam.net/15-color-palettes-inspired-by-the-ocean/
-  Rough Ocean In Color Balance
-light to dark
-dde8f0  foamish
-028abd
-97cbdc
-004581
-001b48 almost black 
-
-
-  
-  */

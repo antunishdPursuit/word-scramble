@@ -1,5 +1,5 @@
 import imgJennifer from "../assets/Jennifer Einstein_2022.jpg";
-import imgDennys from "../assets/DennysAntunish2.jpg"
+import imgDennys from "../assets/tdennysantunish2_720_480-1.jpg"
 import imgKenti from "../assets/Kenti.jpg"
 import './About.css'
 
