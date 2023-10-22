@@ -4,10 +4,13 @@ import "./ScrambledWord.css"
 const API = process.env.REACT_APP_API_URL
 
 function ScrambledWord () {
-  const [wordDefinition, setwordDefinition] = useState(null)
+  const [wordDefinition, setwordDefinition] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [won, setWon] = useState(false);
   const [todayWord, setTodayWord] = useState({word: ''});
+  const [definitionOfWord, setDefinitionOfWord] = useState([])
+  const [revealDefinition, setRevealDefinition] = useState("Defintion: ")
+  const [count, setCount] = useState(0)
 
   useEffect(() => {
 
@@ -15,14 +18,16 @@ function ScrambledWord () {
       .then(response => response.json())
       .then(data => {
         setwordDefinition(data)
+        let spiltDefinition = data[0].meanings[0].definitions[0].definition.split(" ")
+        setDefinitionOfWord(spiltDefinition)
         setIsLoading(true)
       })
       .catch(error => console.error(error));
+
   }, [API, todayWord]);
 
 
   function scramble (word) {
-    console.log(word)
     let wordArr = word.split('')
     let newArr = []
 
@@ -38,21 +43,35 @@ function ScrambledWord () {
   function todaysWord() {
     let todaysDate = (Math.ceil(Date.now() / 1000 / 60 / 60 / 24))-19653
     let todaysWord = words[todaysDate % words.length]
-    console.log("todaysWord:", todaysWord)
     setTodayWord(todaysWord) 
+    test()
+
   }
+  function test(){
+    let newRevealDefinition = "Defintion: "
+
+    definitionOfWord.map( (word, index) => {
+      setTimeout(() => {
+        newRevealDefinition += " " + word
+        console.log(word);
+        setRevealDefinition(newRevealDefinition)
+      }, 4000 * (index + 1) )
+    }) 
+    document.getElementById("PlayButton").innerText = "Need Defintion?"
+    setCount(count+1)
+    if(count === 1){
+      document.getElementById("PlayButton").remove()
+    }
+  }
+
+
   function CheckWord(event) {
     event.preventDefault()
     let wrongList = []
-
-    console.log(event.target.DailyWord.value)
-    console.log(todayWord)
     if(todayWord.word === event.target.DailyWord.value){
-
       setWon(true)
     } else {
       setWon(false)
-
       wrongList.push(event.target.DailyWord.value)
       // wrongList()
     }
@@ -64,11 +83,7 @@ function ScrambledWord () {
     
   }
 
-  function definitionOpaque(definition) {
-    document.getElementById("defeinitionWebPage").innerText = definition
-    console.log(document.getElementById("defeinitionWebPage").innerText)
-    console.log(definition)
-  }
+
   return (
     <div>
       "ScrambedWord"
@@ -78,8 +93,8 @@ function ScrambledWord () {
       <button  
         type="submit"
         onClick={todaysWord}
+        id="PlayButton"
         >PLay</button>
-
         <br></br>
 
         <form onSubmit={CheckWord}>
@@ -98,7 +113,8 @@ function ScrambledWord () {
           <span>Repeat.</span>
         </h1> */}
         <h1>{won ? "You did it " : "Try again"}</h1>
-        {isLoading ? definitionOpaque(wordDefinition[0].meanings[0].definitions[0].definition) : <h1></h1>}
+
+        <h1>{revealDefinition}</h1>
         <h1 id = "defeinitionWebPage"></h1>
     </div>
   )
