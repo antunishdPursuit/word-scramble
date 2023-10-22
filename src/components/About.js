@@ -12,14 +12,14 @@ function About() {
                 <p>This word unscramble was created as part of Pursuit's Hackathon Palooza 2023. </p>
         </div>
             <div className="about-heading">About the Developers</div>
-            <p>Dennys, Jennifer, and Kenti are Pursuit fellows in the 9.6. The Pursuit Fellowship is a 12-month, Google-funded software engineering fellowship with a 9% acceptance rate. Project-based curriculum provides hands-on experience with JavaScript, HTML, CSS, Node, Express, React/Redux, PostgreSQL, APIs, Git, Data Structures, Algorithms, sprints, Agile, code reviews, and pair programming.</p>
+            <p id="about-dev-paragraph">Dennys, Jennifer, and Kenti are Pursuit fellows in the 9.6. The Pursuit Fellowship is a 12-month, Google-funded software engineering fellowship with a 9% acceptance rate. Project-based curriculum provides hands-on experience with JavaScript, HTML, CSS, Node, Express, React/Redux, PostgreSQL, APIs, Git, Data Structures, Algorithms, sprints, Agile, code reviews, and pair programming.</p>
 
         <div className="about about-developers">
             <div className="about about-Dennys about-dev">
                 <img src={imgDennys} alt="Dennys Antunish headshot" className="about-headshot"/>
                 <div className="about-devinfo">
                     <a className="about-name-url" href="https://github.com/antunishdPursuit">Dennys Antunish</a>
-                    <p>Entering the computer field in 2017, Dennys is is especially excited about the developing use of Artificial Intelligence.</p>
+                    <p>Entering the computer field in 2017 but focusing more on programming during the pandemic. Dennys has learned and created projects with Ruby, Ruby on Rails, Python, Javascript, and React. He recently has been excited to learn more about the developing use of Artificial Intelligence and how it can be used to enrich and bridge gaps for people with limited access to education and resources.</p>
                 </div>
             </div>
             <div className="about about-Jennifer about-dev">

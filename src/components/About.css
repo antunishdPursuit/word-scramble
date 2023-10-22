@@ -17,6 +17,10 @@
     margin: 0 15px 0 0;
   }
 
+  #about-dev-paragraph{
+    min-width: 40vh;
+    max-width: 80vh;
+  }
   
 
 .about-heading {
