@@ -7,11 +7,11 @@ function ScrambledWord () {
   const [wordDefinition, setwordDefinition] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
   const [won, setWon] = useState(false);
-  const [todayWord, setTodayWord] = useState('');
+  const [todayWord, setTodayWord] = useState({word: ''});
 
   useEffect(() => {
 
-      fetch(`${API}/${todayWord}`)
+      fetch(`${API}/${todayWord.word}`)
       .then(response => response.json())
       .then(data => {
         setwordDefinition(data)
@@ -22,6 +22,7 @@ function ScrambledWord () {
 
 
   function scramble (word) {
+    console.log(word)
     let wordArr = word.split('')
     let newArr = []
 
@@ -35,9 +36,9 @@ function ScrambledWord () {
   }
 
   function todaysWord() {
-    let dateRightNow = new Date
-    let todaysDate = dateRightNow.getDate()
+    let todaysDate = (Math.ceil(Date.now() / 1000 / 60 / 60 / 24))-19653
     let todaysWord = words[todaysDate % words.length]
+    console.log("todaysWord:", todaysWord)
     setTodayWord(todaysWord) 
   }
   function CheckWord(event) {
@@ -45,14 +46,18 @@ function ScrambledWord () {
     let wrongList = []
     console.log(event.target.DailyWord.value)
     console.log(todayWord)
-    if(todayWord === event.target.DailyWord.value){
+    if(todayWord.word === event.target.DailyWord.value){
       setWon(true)
     } else {
+      setWon(false)
+
       wrongList.push(event.target.DailyWord.value)
-      wrongList()
+      // wrongList()
     }
   }
 
+
+  // wrongList for guesses users have made
   function wrongList(arr) {
     
   }
@@ -61,7 +66,7 @@ function ScrambledWord () {
     <div>
       "ScrambedWord"
       <h1>
-        {isLoading ? scramble(wordDefinition[0].word) : <h2></h2> }
+        {isLoading ? scramble(todayWord.word) : <h2></h2> }
       </h1>
       <button  
         type="submit"
