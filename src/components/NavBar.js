@@ -1,16 +1,13 @@
 import React from 'react';
 import "./NavBar.css";
-import About from "./About"
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
     <div className='navbar'>
-      <div className='navbar__header'>
-        Word Scramble
-      </div>
-      <div>
-        {/* <About /> */}
-      </div>
+        <Link className='navbarBox' to="/"></Link>
+        <Link className='navbarBox' to="/">Word Scramble</Link>
+        <Link className='navbarBox' id="aboutBox" to="/about">About</Link>
     </div>
   );
 }

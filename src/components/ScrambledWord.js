@@ -4,10 +4,17 @@ import "./ScrambledWord.css"
 const API = process.env.REACT_APP_API_URL
 
 function ScrambledWord () {
-  const [wordDefinition, setwordDefinition] = useState(null)
+  const [wordDefinition, setwordDefinition] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [won, setWon] = useState(false);
   const [todayWord, setTodayWord] = useState({word: ''});
+  const [definitionOfWord, setDefinitionOfWord] = useState([])
+  const [revealDefinition, setRevealDefinition] = useState("")
+  const [count, setCount] = useState(0)
+  const [shown, setShown] = useState(false)
+
+
+  const [guesses, setGuesses] = useState(1)
 
   useEffect(() => {
 
@@ -15,14 +22,16 @@ function ScrambledWord () {
       .then(response => response.json())
       .then(data => {
         setwordDefinition(data)
+        let spiltDefinition = data[0].meanings[0].definitions[0].definition.split(" ")
+        setDefinitionOfWord(spiltDefinition)
         setIsLoading(true)
       })
       .catch(error => console.error(error));
-  }, [API, todayWord]);
+    }, [API, todayWord]);
+  
 
 
   function scramble (word) {
-    console.log(word)
     let wordArr = word.split('')
     let newArr = []
 
@@ -38,21 +47,38 @@ function ScrambledWord () {
   function todaysWord() {
     let todaysDate = (Math.ceil(Date.now() / 1000 / 60 / 60 / 24))-19653
     let todaysWord = words[todaysDate % words.length]
-    console.log("todaysWord:", todaysWord)
     setTodayWord(todaysWord) 
+    setShown(true)
+    definitionTimeout()
+
   }
+  function definitionTimeout(){
+    let newRevealDefinition = ""
+
+    definitionOfWord.map( (word, index) => {
+      setTimeout(() => {
+        newRevealDefinition += " " + word
+        console.log(word);
+        setRevealDefinition(newRevealDefinition)
+      }, 4000 * (index + 1) )
+    }) 
+    document.getElementById("PlayButton").innerText = "Need Definition?"
+    setCount(count+1)
+    if(count === 1){
+      document.getElementById("PlayButton").remove()
+    }
+  }
+
+
   function CheckWord(event) {
     event.preventDefault()
     let wrongList = []
-
-    console.log(event.target.DailyWord.value)
-    console.log(todayWord)
     if(todayWord.word === event.target.DailyWord.value){
-
       setWon(true)
     } else {
+      setGuesses(guesses +1 )
+      document.getElementById("Guess").innerText = `Guess Attempt:  ${guesses}`
       setWon(false)
-
       wrongList.push(event.target.DailyWord.value)
       // wrongList()
     }
@@ -64,28 +90,25 @@ function ScrambledWord () {
     
   }
 
-  function definitionOpaque(definition) {
-    document.getElementById("defeinitionWebPage").innerText = definition
-    console.log(document.getElementById("defeinitionWebPage").innerText)
-    console.log(definition)
-  }
+
   return (
     <div className="scrambled-area">
-      <span className="scrambled-word__header">
-        Scrambled Word
-      </span>
-      <h1 scrambled-word>
-        {isLoading ? scramble(todayWord.word) : <h2></h2> }
+
+      <h1>
+        {isLoading ? scramble(todayWord.word) : <p></p> }
+
       </h1>
       <button  
       className='scrambled-area__play-button'
         type="submit"
         onClick={todaysWord}
+        id="PlayButton"
         >Play</button>
 
         <br></br>
 
-        <form onSubmit={CheckWord}>
+      {shown ?
+          <form onSubmit={CheckWord}>
           <input
           id="DailyWord"
           className="daily-word"
@@ -97,14 +120,24 @@ function ScrambledWord () {
           type="submit"
           >Guess</button>
         </form>
-        {/* <h1 class="fadeIn">
-          <span>Eat.</span>
-          <span>Sleep.</span>
-          <span>Repeat.</span>
-        </h1> */}
-        <h1 className="winner">{won ? "You did it " : "Try again"}</h1>
-        {isLoading ? definitionOpaque(wordDefinition[0].meanings[0].definitions[0].definition) : <h1></h1>}
-        <h1 className='word-definition' id = "defeinitionWebPage"></h1>
+        :
+        <p></p>}
+      {shown ?
+      <h1 className="winner" id="Guess">{won ? "You did it " : ""}</h1>
+      :
+      <p></p>
+      }
+      {shown ?
+        <div>
+          
+            <div className="hidden">
+              <h1 className='word-definition' id = "defeinitionWebPage"><span>Definition:</span>{revealDefinition}</h1>
+            </div> 
+        </div>
+        :
+        <p></p>
+      }
+
     </div>
   )
 }

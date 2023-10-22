@@ -1,3 +1,7 @@
+body{
+  background-color: #65B2CA;
+}
+
 #defeinitionWebPage{
     animation: fadein 10s ease-in alternate 1;
 }
@@ -27,6 +31,8 @@
   border-right: 10px;
   padding: 20px 0 20px 0;
 }
+
+
 @keyframes fadein {
     from { opacity: 0; }
     to { opacity: 1; }

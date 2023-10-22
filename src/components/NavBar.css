@@ -1,12 +1,37 @@
 .navbar {
   align-items: center;
-  border: 2px solid gray;
+  border: 2px solid #1F93B6;
   background-color: #65B2CA;
   display: flex;
   font-size: 2.5em;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
 }
+.navbarBox{
+  color: #fff; 
+  text-decoration: none; 
+  padding: 10px; 
+}
+
+#aboutBox{
+  font-size: 1.4rem; 
+  
+}
+
+
+.navbarBox:hover{
+  color:#1F93B6
+}
+
 .navbar__header{
+  font-family: Grandstander;
+  font-weight: 900;
+  padding: 20px 0 10px 0px;
+  color: #186690;
+
+}
+
+#aboutBox{
+  font-weight: 400;
 
 }
