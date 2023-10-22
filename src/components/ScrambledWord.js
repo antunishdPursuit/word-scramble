@@ -74,7 +74,7 @@ function ScrambledWord () {
       <span className="scrambled-word__header">
         Scrambled Word
       </span>
-      <h1>
+      <h1 scrambled-word>
         {isLoading ? scramble(todayWord.word) : <h2></h2> }
       </h1>
       <button  
