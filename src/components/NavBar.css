@@ -1,6 +1,6 @@
 .navbar {
   align-items: center;
-  border: 2px solid gray;
+  border: 2px solid #1F93B6;
   background-color: #65B2CA;
   display: flex;
   font-size: 2.5em;
@@ -8,5 +8,8 @@
   justify-content: center;
 }
 .navbar__header{
-
+  font-family: Grandstander;
+  font-weight: 900;
+  padding: 20px 0 10px 0px;
+  color: #186690;
 }
