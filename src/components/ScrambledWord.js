@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import words from './WordsDb';
-
+import "./ScrambledWord.css"
 const API = process.env.REACT_APP_API_URL
 
 function ScrambledWord () {
@@ -38,18 +38,16 @@ function ScrambledWord () {
     let dateRightNow = new Date
     let todaysDate = dateRightNow.getDate()
     let todaysWord = words[todaysDate % words.length]
-    setTodayWord(todaysWord) 
+    setTodayWord(todaysWord.word) 
   }
   function CheckWord(event) {
     event.preventDefault()
     let wrongList = []
-    console.log(event.target.DailyWord.value)
-    console.log(todayWord)
     if(todayWord === event.target.DailyWord.value){
       setWon(true)
     } else {
       wrongList.push(event.target.DailyWord.value)
-      wrongList()
+      // wrongList()
     }
   }
 
@@ -57,6 +55,11 @@ function ScrambledWord () {
     
   }
 
+  function definitionOpaque(definition) {
+    document.getElementById("defeinitionWebPage").innerText = definition
+    console.log(document.getElementById("defeinitionWebPage").innerText)
+    console.log(definition)
+  }
   return (
     <div>
       "ScrambedWord"
@@ -80,8 +83,14 @@ function ScrambledWord () {
           type="submit"
           >Guess</button>
         </form>
+        {/* <h1 class="fadeIn">
+          <span>Eat.</span>
+          <span>Sleep.</span>
+          <span>Repeat.</span>
+        </h1> */}
         <h1>{won ? "You did it " : "Try again"}</h1>
-      {/* {console.log(wordDefinition[0].meanings[0].definitions[0].definition)} */}
+        {isLoading ? definitionOpaque(wordDefinition[0].meanings[0].definitions[0].definition) : <h1></h1>}
+        <h1 id = "defeinitionWebPage"></h1>
     </div>
   )
 }

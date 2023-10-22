@@ -1,0 +1,30 @@
+#defeinitionWebPage{
+    animation: fadein 10s ease-in alternate 1;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+h1.fadeIn span{
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeIn 0.5s ease-out forwards;
+    display:inline-block;
+  }
+  
+  h1.fadeIn span:nth-of-type(2){
+    animation-delay: 0.5s;
+  }
+  
+  h1.fadeIn span:nth-of-type(3){
+    animation-delay: 1s;
+  }
+  
+  @keyframes fadeIn{
+    to{
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
