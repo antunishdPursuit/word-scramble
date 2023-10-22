@@ -27,8 +27,8 @@ function ScrambledWord () {
         setIsLoading(true)
       })
       .catch(error => console.error(error));
-
-  }, [API, todayWord]);
+    }, [API, todayWord]);
+  
 
 
   function scramble (word) {
@@ -49,10 +49,10 @@ function ScrambledWord () {
     let todaysWord = words[todaysDate % words.length]
     setTodayWord(todaysWord) 
     setShown(true)
-    test()
+    definitionTimeout()
 
   }
-  function test(){
+  function definitionTimeout(){
     let newRevealDefinition = ""
 
     definitionOfWord.map( (word, index) => {
@@ -94,7 +94,7 @@ function ScrambledWord () {
   return (
     <div className="scrambled-area">
       <h1>
-        {isLoading ? scramble(todayWord.word) : <h2></h2> }
+        {isLoading ? scramble(todayWord.word) : <p></p> }
       </h1>
       <button  
       className='scrambled-area__play-button'
@@ -105,12 +105,8 @@ function ScrambledWord () {
 
         <br></br>
 
-
-        {shown ?
-        <div>
-
-
-        <form onSubmit={CheckWord}>
+      {shown ?
+          <form onSubmit={CheckWord}>
           <input
           id="DailyWord"
           className="daily-word"
@@ -122,13 +118,23 @@ function ScrambledWord () {
           type="submit"
           >Guess</button>
         </form>
-
-          <h1 className="winner" id="Guess">{won ? "You did it " : ""}</h1>
-          <div className="hidden">
-            <h1 className='word-definition' id = "defeinitionWebPage"><span>Definition:</span>{revealDefinition}</h1>
-          </div> 
-        </div>:
-        <h1></h1>}
+        :
+        <p></p>}
+      {shown ?
+      <h1 className="winner" id="Guess">{won ? "You did it " : ""}</h1>
+      :
+      <p></p>
+      }
+      {shown ?
+        <div>
+          
+            <div className="hidden">
+              <h1 className='word-definition' id = "defeinitionWebPage"><span>Definition:</span>{revealDefinition}</h1>
+            </div> 
+        </div>
+        :
+        <p></p>
+      }
 
     </div>
   )
