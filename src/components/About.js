@@ -39,7 +39,7 @@ function About() {
 </div>
         
     </div>
-  )
+ç  )
 }
 
 export default About
