@@ -1,0 +1,12 @@
+.navbar {
+  align-items: center;
+  border: 2px solid gray;
+  background-color: #65B2CA;
+  display: flex;
+  font-size: 2.5em;
+  flex-direction: row;
+  justify-content: center;
+}
+.navbar__header{
+
+}
