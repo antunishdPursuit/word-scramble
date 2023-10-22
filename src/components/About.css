@@ -9,13 +9,14 @@
   }
   
 .about-container {
-    background-color: bisque;
+    background-color: #65b2ca;
     height : 100vh;
+    
   }
   
 .about-dev{
     display: flex;
-    background-color: green;
+
 }
 
 .about-devinfo {
@@ -23,10 +24,40 @@
 }
 
 .about-developers {
-    background-color: cornflowerblue;
+
     display : flex;
     flex-direction: column;
     justify-content: flex-start;
+    min-width: 40vh;
+    max-width: 80vh;
   }
 
 
+
+.about-name-url{
+  font-size: larger;
+}
+
+.about-Kenti {
+  
+}
+
+.about-Jennifer {
+ 
+}
+
+.about-Dennys {
+  
+}
+  /* color pallete from  https://thecameronteam.net/15-color-palettes-inspired-by-the-ocean/
+  Rough Ocean In Color Balance
+light to dark
+dde8f0  foamish
+028abd
+97cbdc
+004581
+001b48 almost black 
+
+
+  
+  */
