@@ -11,6 +11,11 @@
   color: #fff; 
   text-decoration: none; 
   padding: 10px; 
+  font-family: Grandstander;
+  font-weight: 900;
+  padding: 20px 0 10px 0px;
+  color: #186690;
+
 }
 
 #aboutBox{

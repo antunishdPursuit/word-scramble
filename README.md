@@ -1,9 +1,5 @@
 # Word Unscramble with Definitions
 
+This word unscramble was created as part of Pursuit's Hackathon Palooza 2023.
 
-
-
-## About Us
-
-
-
+Press play to start gameplay and start guessing! Can you guess
