@@ -85,25 +85,31 @@ function ScrambledWord () {
 
 
   return (
-    <div>
-      "ScrambedWord"
+    <div className="scrambled-area">
+      <span className="scrambled-word__header">
+        Scrambled Word
+      </span>
       <h1>
         {isLoading ? scramble(todayWord.word) : <h2></h2> }
       </h1>
       <button  
+      className='scrambled-area__play-button'
         type="submit"
         onClick={todaysWord}
         id="PlayButton"
-        >PLay</button>
+        >Play</button>
+
         <br></br>
 
         <form onSubmit={CheckWord}>
           <input
           id="DailyWord"
+          className="daily-word"
           type="search"
           ></input>
 
-          <button  
+          <button 
+          className="daily-word__button"
           type="submit"
           >Guess</button>
         </form>
@@ -112,10 +118,10 @@ function ScrambledWord () {
           <span>Sleep.</span>
           <span>Repeat.</span>
         </h1> */}
-        <h1>{won ? "You did it " : "Try again"}</h1>
 
+        <h1 className="winner">{won ? "You did it " : "Try again"}</h1>
         <h1>{revealDefinition}</h1>
-        <h1 id = "defeinitionWebPage"></h1>
+        <h1 className='word-definition' id = "defeinitionWebPage"></h1>
     </div>
   )
 }
