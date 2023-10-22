@@ -12,6 +12,8 @@ function ScrambledWord () {
   const [revealDefinition, setRevealDefinition] = useState("")
   const [count, setCount] = useState(0)
   const [shown, setShown] = useState(false)
+
+
   const [guesses, setGuesses] = useState(1)
 
   useEffect(() => {
@@ -91,9 +93,6 @@ function ScrambledWord () {
 
   return (
     <div className="scrambled-area">
-      <span className="scrambled-word__header">
-        Scrambled Word
-      </span>
       <h1>
         {isLoading ? scramble(todayWord.word) : <h2></h2> }
       </h1>
@@ -106,8 +105,10 @@ function ScrambledWord () {
 
         <br></br>
 
+
         {shown ?
         <div>
+
 
         <form onSubmit={CheckWord}>
           <input
@@ -121,6 +122,7 @@ function ScrambledWord () {
           type="submit"
           >Guess</button>
         </form>
+
           <h1 className="winner" id="Guess">{won ? "You did it " : ""}</h1>
           <div className="hidden">
             <h1 className='word-definition' id = "defeinitionWebPage"><span>Definition:</span>{revealDefinition}</h1>
