@@ -13,7 +13,7 @@ function ScrambledWord () {
   const [count, setCount] = useState(0)
   const [shown, setShown] = useState(false)
   const [guesses, setGuesses] = useState(1)
-
+  const [wordMash, setWordMash] = useState("")
   useEffect(() => {
 
       fetch(`${API}/${todayWord.word}`)
@@ -23,6 +23,7 @@ function ScrambledWord () {
         let spiltDefinition = data[0].meanings[0].definitions[0].definition.split(" ")
         setDefinitionOfWord(spiltDefinition)
         setIsLoading(true)
+        setWordMash(scramble(todayWord.word))
       })
       .catch(error => console.error(error));
 
@@ -95,7 +96,7 @@ function ScrambledWord () {
         Scrambled Word
       </span>
       <h1>
-        {isLoading ? scramble(todayWord.word) : <h2></h2> }
+        {isLoading ? wordMash : <h2></h2> }
       </h1>
       <button  
       className='scrambled-area__play-button'
