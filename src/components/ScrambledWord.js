@@ -1,4 +1,3 @@
-import fetchWord from "./Fetch";
 import { useEffect, useState } from "react";
 import words from './WordsDb';
 
