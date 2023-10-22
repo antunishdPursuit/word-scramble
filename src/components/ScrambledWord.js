@@ -93,8 +93,10 @@ function ScrambledWord () {
 
   return (
     <div className="scrambled-area">
+
       <h1>
         {isLoading ? scramble(todayWord.word) : <p></p> }
+
       </h1>
       <button  
       className='scrambled-area__play-button'
