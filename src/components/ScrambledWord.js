@@ -9,8 +9,10 @@ function ScrambledWord () {
   const [won, setWon] = useState(false);
   const [todayWord, setTodayWord] = useState({word: ''});
   const [definitionOfWord, setDefinitionOfWord] = useState([])
-  const [revealDefinition, setRevealDefinition] = useState("Defintion: ")
+  const [revealDefinition, setRevealDefinition] = useState("")
   const [count, setCount] = useState(0)
+  const [shown, setShown] = useState(false)
+  const [guesses, setGuesses] = useState(1)
 
   useEffect(() => {
 
@@ -44,11 +46,12 @@ function ScrambledWord () {
     let todaysDate = (Math.ceil(Date.now() / 1000 / 60 / 60 / 24))-19653
     let todaysWord = words[todaysDate % words.length]
     setTodayWord(todaysWord) 
+    setShown(true)
     test()
 
   }
   function test(){
-    let newRevealDefinition = "Defintion: "
+    let newRevealDefinition = ""
 
     definitionOfWord.map( (word, index) => {
       setTimeout(() => {
@@ -57,7 +60,7 @@ function ScrambledWord () {
         setRevealDefinition(newRevealDefinition)
       }, 4000 * (index + 1) )
     }) 
-    document.getElementById("PlayButton").innerText = "Need Defintion?"
+    document.getElementById("PlayButton").innerText = "Need Definition?"
     setCount(count+1)
     if(count === 1){
       document.getElementById("PlayButton").remove()
@@ -71,6 +74,8 @@ function ScrambledWord () {
     if(todayWord.word === event.target.DailyWord.value){
       setWon(true)
     } else {
+      setGuesses(guesses +1 )
+      document.getElementById("Guess").innerText = `Guess Attempt:  ${guesses}`
       setWon(false)
       wrongList.push(event.target.DailyWord.value)
       // wrongList()
@@ -101,6 +106,9 @@ function ScrambledWord () {
 
         <br></br>
 
+        {shown ?
+        <div>
+
         <form onSubmit={CheckWord}>
           <input
           id="DailyWord"
@@ -113,15 +121,13 @@ function ScrambledWord () {
           type="submit"
           >Guess</button>
         </form>
-        {/* <h1 class="fadeIn">
-          <span>Eat.</span>
-          <span>Sleep.</span>
-          <span>Repeat.</span>
-        </h1> */}
+          <h1 className="winner" id="Guess">{won ? "You did it " : ""}</h1>
+          <div className="hidden">
+            <h1 className='word-definition' id = "defeinitionWebPage"><span>Definition:</span>{revealDefinition}</h1>
+          </div> 
+        </div>:
+        <h1></h1>}
 
-        <h1 className="winner">{won ? "You did it " : "Try again"}</h1>
-        <h1>{revealDefinition}</h1>
-        <h1 className='word-definition' id = "defeinitionWebPage"></h1>
     </div>
   )
 }
